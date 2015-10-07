@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.alex.ghostapp2" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".GhostInitialSetupActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".GhostSetupActivity"
+            android:label="@string/title_activity_ghost_setup" >
+        </activity>
+        <activity
+            android:name=".WinnerScreenActivity"
+            android:label="@string/title_activity_winner_screen" >
+        </activity>
+        <activity
+            android:name=".GhostHighScoresActivity"
+            android:label="@string/title_activity_ghost_high_scores" >
+        </activity>
+        <activity
+            android:name=".GhostRulesActivity"
+            android:label="@string/title_activity_ghost_rules" >
+        </activity>
+        <activity
+            android:name=".GhostGameActivity"
+            android:label="@string/title_activity_ghost_game" >
+        </activity>
+    </application>
+
+</manifest>

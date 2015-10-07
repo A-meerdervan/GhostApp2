@@ -1,0 +1,86 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".GhostInitialSetupActivity"
+    android:background="@string/MainBackgroundColor">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="false"
+        android:id="@+id/LinLayLanguage">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="10dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Choose Language"
+            android:id="@+id/textView"
+            android:layout_centerHorizontal="true" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="65dp"
+                android:id="@+id/DutchFlag"
+                android:src="@drawable/nederlandsevlag"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:layout_below="@+id/DutchFlag"
+                android:layout_centerHorizontal="false"
+                android:layout_marginTop="30dp"
+                android:onClick="onClickLanguageFlag"
+                android:background="@android:color/transparent"/>
+
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="65dp"
+                android:id="@+id/EnglishFlag"
+                android:src="@drawable/englishflag"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:layout_below="@+id/DutchFlag"
+                android:layout_centerHorizontal="false"
+                android:layout_marginTop="30dp"
+                android:onClick="onClickLanguageFlag"
+                android:background="@android:color/transparent"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="View the Rules"
+        android:id="@+id/ViewRulesButton"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/LinLayLanguage"
+        android:layout_marginTop="100dp"
+        android:onClick="onClickViewRules"
+        android:background="@string/MainButtonColor"
+        android:padding="5dp"/>
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Continue"
+        android:id="@+id/ContinueButton"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/ViewRulesButton"
+        android:layout_marginTop="30dp"
+        android:onClick="onClickViewRules"
+        android:background="@string/MainButtonColor"
+        android:padding="5dp"/>
+
+</RelativeLayout>
