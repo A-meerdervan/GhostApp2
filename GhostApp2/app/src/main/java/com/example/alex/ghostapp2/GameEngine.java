@@ -7,17 +7,21 @@ import android.util.Log;
  */
 public class GameEngine {
 
-    public GameEngine(Lexicon lexiconn, String player1, String player2){
-        CurrentPlayer = player1;
-        OtherPlayer = player2;
+    public GameEngine(Lexicon lexiconn, String language){
         lexicon = lexiconn;
+        Language = language;
     }
 
+    public GameEngine(Lexicon lexiconn, String language, boolean firstGuessNotMadeYet){
+        FirstGuessNotMadeYet = firstGuessNotMadeYet;
+        lexicon = lexiconn;
+        Language = language;
+    }
+
+    private String Language = "uninitialized";
     public Lexicon lexicon;
     // Wellicht is de regel hieronder nooit nodig
     public String Prefix = "";
-    public String CurrentPlayer = "Uninitialised Player 1";
-    public String OtherPlayer = "Unitialised Player 2";
     public boolean FirstGuessNotMadeYet = true;
     public String ReasonForWinning = "Uninitialised";
 
@@ -34,7 +38,6 @@ public class GameEngine {
             }
             // the game did not end
             else {
-                SwitchPlayers();
                 FirstGuessNotMadeYet = false;
                 return false;
             }
@@ -60,7 +63,6 @@ public class GameEngine {
                 }
                 // the game did not end
                 else {
-                    SwitchPlayers();
                     return false;
                 }
             }
@@ -82,14 +84,4 @@ public class GameEngine {
         lexicon.resetClass();
     }
 
-    public void winner(){
-        // verzin nog iets.
-        // Je kunt een int returnen met of het player 1 of 2 is ofzo.
-    }
-
-    public void SwitchPlayers(){
-        String TempPlayer = CurrentPlayer;
-        CurrentPlayer = OtherPlayer;
-        OtherPlayer = TempPlayer;
-    }
 }

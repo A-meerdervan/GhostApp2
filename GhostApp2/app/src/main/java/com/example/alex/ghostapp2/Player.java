@@ -3,25 +3,32 @@ package com.example.alex.ghostapp2;
 /**
  * Created by Alex on 7-10-2015.
  */
-public class Player {
+public class Player implements java.io.Serializable {
 
-    private String Name = "unitialized";
-    private int Score = 0;
+    public String Name = "unitialized";
+    public int Score = 0;
+
+    // The 3 constructors
+    public Player(String name){
+        Name = name;
+    }
 
     public Player(String name, int score){
         Name = name;
         Score = score;
     }
+    public Player(){
+    }
 
     // If the player wins a game
     public void increaseScore(){
-        Score += 10;
+        Score = Score + 10;
     }
 
     // if the player loses a game
     public void decreaseScore(){
         if (Score > 4){
-            Score -= 5;
+            Score = Score - 5;
         }
     }
 }

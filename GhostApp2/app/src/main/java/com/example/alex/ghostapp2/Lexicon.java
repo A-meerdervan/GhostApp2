@@ -16,16 +16,17 @@ public class Lexicon {
 
     private HashSet<String> FullDictionary = new HashSet<>();
     public HashSet<String> CurrentFilteredSet = new HashSet<>();
-    private int LetterIndex = 3; // The LetterIndex is used in the FilterLetter function and is used from the third letter onwards
+    public int LetterIndex = 3; // The LetterIndex is used in the FilterLetter function and is used from the third letter onwards
 
     public Lexicon(Context context, String language){
         String FileName;
         if (language.equals("dutch"))
-            FileName = "dutch1.txt";
+            FileName = "dutch.txt";
         // Language is english
         else{
             FileName = "english.txt";
         }
+        Log.d("xzzr", FileName);
         ReadFromfile(FileName, context);
     }
 
@@ -95,6 +96,7 @@ public class Lexicon {
             if (Woord.length() > 2 ){
                 if (Woord.charAt(2) == FilterLetter3) {
                     SubSetLetter3.add(Woord);
+                    Log.d("xzzr",Woord);
                 }
             }
         }

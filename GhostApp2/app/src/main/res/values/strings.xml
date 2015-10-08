@@ -7,12 +7,14 @@
     <string name="title_activity_winner_screen">WinnerScreenActivity</string>
     <string name="title_activity_ghost_high_scores">GhostHighScoresActivity</string>
     <string name="title_activity_ghost_rules">GhostRulesActivity</string>
-    <string name="TheRulesDutch">Het is de bedoeling dat iemand begint met 3 letters en dat dan om de beurt een letter word toegevoegd. Wanneer door toevoeging van jouw letter een bestaand woord ontstaan, heb je verloren
+    <string name="RulesDutch">Het is de bedoeling dat iemand begint met 3 letters en dat dan om de beurt een letter word toegevoegd. Wanneer door toevoeging van jouw letter een bestaand woord ontstaan, heb je verloren
     wanneer de groep letters na jouw toevoeging geen bestaand woord meer zou kunnen vormen, heb je ook verloren.
     Dit is een spel voor mensen met een gigantische woordenschat, want let op, ook de meest absurde woorden staan in ons woordenboek.</string>
-    <string name="TheRulesEnglish">One player starts with 3 letters and then in turns, players add a letter. This game is not so much about winning, but more about not losing. When after the letter you added, an existing word was created, you lost the game.
+    <string name="RulesEnglish">One player starts with 3 letters and then in turns, players add a letter. This game is not so much about winning, but more about not losing. When after the letter you added, an existing word was created, you lost the game.
     when there are no words that start with the prefix that results from your added letter, you lose the game.
     And so the other wins</string>
+    <string name="TheRulesDutch">De Regels</string>
+    <string name="TheRulesEnglish">The Rules</string>
     <string name="Default">lkajsdfas    asdfasdasdkfh asdf    asdf    asdfasdfasdfjhaskldhf akjsdfkkkk dkdkkkka  sdddd eiiiie     ei k ik wil graag dit kwijt ik ga het nu hebben over hoofden, hoofden zijn een soort van rond en wegen ongeveer 8kg. </string>
     <string name="title_activity_ghost_game">GhostGameActivity</string>
     <string name="MainBackgroundColor">#35001ffd</string>

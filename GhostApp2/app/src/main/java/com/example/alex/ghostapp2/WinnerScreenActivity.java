@@ -1,16 +1,53 @@
 package com.example.alex.ghostapp2;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 public class WinnerScreenActivity extends AppCompatActivity {
+
+    private String Winner = "uninitialized";
+    private String ReasonForWinning = "uninitialized bla bla";
+    private Players players;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_winner_screen);
+        Intent intent = this.getIntent();
+        Winner = intent.getStringExtra("Winner");
+        ReasonForWinning = intent.getStringExtra("reasonforwinning");
+        TextView tvWinner = (TextView)findViewById(R.id.Winner);
+        TextView tvReason = (TextView)findViewById(R.id.Reason);
+        tvWinner.setText("The winner is " + Winner + "!!!");
+        tvReason.setText(ReasonForWinning);
+        //if (intent.getSerializableExtra("players") != null){
+        //    players = (Players)intent.getSerializableExtra("players");
+        //}
+        //else{
+        //    Log.d("xzzr", "Het players object werd niet succesvol gestuurd naar de winnerScreen activity");
+       // }
+
+        // Get the language
+        SharedPreferences prefs = getSharedPreferences("SaveGame", Context.MODE_PRIVATE);
+        String Language = prefs.getString("Language", "Dutch");
+        // Change the screen items:
+    }
+
+    public void onClickViewHighScores(View view){
+        // Move to teh Highscores activity
+
+        Intent intent = new Intent(getApplicationContext(), GhostHighScoresActivity.class);
+        //intent.putExtra("players", players);
+        startActivity(intent);
+        this.finish();
     }
 
     @Override

@@ -1,9 +1,12 @@
 package com.example.alex.ghostapp2;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class GhostRulesActivity extends AppCompatActivity {
 
@@ -11,6 +14,22 @@ public class GhostRulesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ghost_rules);
+        // Get the language
+        SharedPreferences prefs = getSharedPreferences("SaveGame", Context.MODE_PRIVATE);
+        String Language = prefs.getString("Language", "dutch");
+        // Put screen in right language
+        TextView tvTheRules = (TextView)findViewById(R.id.TheRulesTV);
+        TextView tvRules = (TextView)findViewById(R.id.RulesTV);
+        if (Language.equals("dutch")){
+            // Set the views in dutch
+            tvTheRules.setText(this.getString(R.string.TheRulesDutch));
+            tvRules.setText(this.getString(R.string.RulesDutch));
+        }
+        else{
+            // Set the views in English
+            tvTheRules.setText(this.getString(R.string.TheRulesEnglish));
+            tvRules.setText(this.getString(R.string.RulesEnglish));
+        }
     }
 
     @Override
