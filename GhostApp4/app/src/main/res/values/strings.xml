@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">GhostApp4</string>
+
+    <string name="hello_world" translatable="false">Hello world!</string>
+    <string name="action_settings" translatable="false">Settings</string>
+    <string name="title_activity_ghost_setup" translatable="false">GhostSetupActivity</string>
+    <string name="title_activity_winner_screen" translatable="false">WinnerScreenActivity</string>
+    <string name="title_activity_ghost_high_scores" translatable="false">GhostHighScoresActivity</string>
+    <string name="title_activity_ghost_rules" translatable="false">GhostRulesActivity</string>
+    <string name="RulesDutch" translatable="false">Het is de bedoeling dat iemand begint met 3 letters en dat dan om de beurt een letter word toegevoegd. Wanneer door toevoeging van jouw letter een bestaand woord ontstaat, heb je verloren.
+    Wanneer de groep letters na jouw toevoeging geen bestaand woord meer zou kunnen vormen, heb je ook verloren.
+    Dit is een spel voor mensen met een gigantische woordenschat, want let op, ook de meest absurde woorden staan in ons woordenboek.</string>
+    <string name="RulesEnglish">One player starts with 3 letters and then in turns, players add a letter. This game is not so much about winning, but more about not losing. When after the letter you added, an existing word was created, you lost the game.
+    When there are no words that start with the prefix that results from your added letter, you lose the game.
+    And so the other wins</string>
+    <string name="TheRulesDutch" translatable="false">De Regels</string>
+    <string name="TheRulesEnglish" translatable="false">The Rules</string>
+    <string name="Default" translatable="false">bla bla bla bla bla</string>
+    <string name="title_activity_ghost_game" translatable="false">GhostGameActivity</string>
+    <string name="title_activity_ghost_settings" translatable="false">GhostSettingsActivity</string>
+    <string name="title_activity_ghost_pause" translatable="false">GhostPauseActivity</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

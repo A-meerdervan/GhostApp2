@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/SuggestionTextView"
+    android:layout_width="290dp"
+    android:layout_height="wrap_content"
+    android:textAppearance="?android:attr/textAppearanceListItemSmall"
+    android:layout_marginLeft="22dp"
+    android:layout_alignParentLeft="true"
+    android:paddingTop="0dp"
+    android:text="uninitialized"
+    android:paddingBottom="0dp"
+    android:paddingLeft="4dp"/>

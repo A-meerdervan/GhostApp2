@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.alex.ghostapp3" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.example.alex.ghostapp3.GhostInitialSetupActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.alex.ghostapp3.GhostInitialSetupActivity" />
+        </activity>
+        <activity
+            android:name="com.example.alex.ghostapp3.GhostSetupActivity"
+            android:label="@string/title_activity_ghost_setup" >
+        </activity>
+        <activity
+            android:name="com.example.alex.ghostapp3.WinnerScreenActivity"
+            android:label="@string/title_activity_winner_screen" >
+        </activity>
+        <activity
+            android:name="com.example.alex.ghostapp3.GhostHighScoresActivity"
+            android:label="@string/title_activity_ghost_high_scores" >
+        </activity>
+        <activity
+            android:name="com.example.alex.ghostapp3.GhostRulesActivity"
+            android:label="@string/title_activity_ghost_rules" >
+        </activity>
+        <!--The Single Task is added, so that there is always one game instance
+            In this way the Lexicon only loades once-->
+        <activity
+            android:name="com.example.alex.ghostapp3.GhostGameActivity"
+            android:label="@string/title_activity_ghost_game"
+            android:launchMode="singleTask">
+        </activity>
+        <activity
+            android:name="com.example.alex.ghostapp3.GhostSettingsActivity"
+            android:label="@string/title_activity_ghost_settings" >
+        </activity>
+        <activity
+            android:name="com.example.alex.ghostapp3.GhostPauseActivity"
+            android:label="@string/title_activity_ghost_pause" >
+        </activity>
+    </application>
+
+</manifest>

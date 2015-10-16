@@ -1,0 +1,60 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GhostPauseActivity"
+    android:background="@color/MainBackgroundColor">
+
+    <include
+        android:id="@+id/AppBar"
+        layout="@layout/app_bar">
+    </include>
+
+    <Button
+        android:layout_below="@+id/AppBar"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Resume"
+        android:id="@+id/ResumeButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/MarginTop"
+        android:onClick="onClickResume"
+        android:background="@color/MainButtonColor"
+        android:padding="5dp"/>
+
+    <Button
+        android:layout_marginTop="@dimen/MarginTop"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ResumeButton"
+        android:text="View the Rules"
+        android:id="@+id/ViewRulesButton3"
+        android:layout_centerHorizontal="true"
+        android:onClick="onClickViewRules"
+        android:background="@color/MainButtonColor"
+        android:padding="5dp"/>
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Start new game"
+        android:id="@+id/StartNewGameButton2"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/ViewRulesButton3"
+        android:layout_marginTop="@dimen/MarginTop"
+        android:onClick="onClickStartNewGame"
+        android:background="@color/MainButtonColor"
+        android:padding="5dp"/>
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Change Players \n(closes current game)"
+        android:id="@+id/ChangePlayersButton2"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/StartNewGameButton2"
+        android:layout_marginTop="@dimen/MarginTop"
+        android:onClick="onClickChangePlayers"
+        android:background="@color/MainButtonColor"
+        android:padding="5dp"/>
+
+</RelativeLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GhostApp3</string>
+    <string name="Default"></string>
+    <string name="RulesDutch"></string>
+    <string name="RulesEnglish">Het is de bedoeling dat iemand begint met 3 letters en dat dan om de beurt een letter word toegevoegd. Wanneer door toevoeging van jouw letter een bestaand woord ontstaat, heb je verloren.     Wanneer de groep letters na jouw toevoeging geen bestaand woord meer zou kunnen vormen, heb je ook verloren.     Dit is een spel voor mensen met een gigantische woordenschat, want let op, ook de meest absurde woorden staan in ons woordenboek.</string>
+</resources>

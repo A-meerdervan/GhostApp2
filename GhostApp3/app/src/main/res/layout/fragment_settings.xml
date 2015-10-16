@@ -1,0 +1,111 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.alex.ghostapp3.SettingsFragment"
+    android:background="@color/Black">
+
+    <!--<include-->
+    <!--android:id="@+id/AppBar"-->
+    <!--layout="@layout/app_bar">-->
+    <!--</include>-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="false"
+        android:id="@+id/LinLayLanguage2">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/DpFromSide"
+            android:layout_marginTop="@dimen/MarginTop"
+            android:textSize="20sp"
+            android:text="Choose Language"
+            android:textColor="@color/Black"
+            android:id="@+id/LanguageTV2"
+            android:layout_alignParentLeft="true"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/DpFromSide"
+            android:layout_alignParentRight="true">
+
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="65dp"
+                android:id="@+id/DutchFlag2"
+                android:src="@drawable/nederlandsevlag"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:layout_centerHorizontal="false"
+                android:layout_marginTop="@dimen/MarginTop"
+                android:onClick="onClickLanguageFlag"
+                android:background="@android:color/transparent"/>
+
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="65dp"
+                android:id="@+id/EnglishFlag2"
+                android:src="@drawable/englishflag"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:layout_below="@+id/DutchFlag2"
+                android:layout_centerHorizontal="false"
+                android:layout_marginTop="@dimen/MarginTop"
+                android:onClick="onClickLanguageFlag"
+                android:background="@android:color/transparent"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <Button
+        android:layout_marginTop="@dimen/MarginTop"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="View the Rules"
+        android:id="@+id/ViewRulesButton2"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/LinLayLanguage2"
+        android:onClick="onClickViewRules"
+        android:background="@color/MainButtonColor"
+        android:padding="5dp"/>
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Change Players \n(closes current game)"
+        android:id="@+id/ChangePlayersButton"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/ViewRulesButton2"
+        android:layout_marginTop="@dimen/MarginTop"
+        android:onClick="onClickChangePlayers"
+        android:background="@color/MainButtonColor"
+        android:padding="5dp"/>
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Start new game"
+        android:id="@+id/StartNewGameButton"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/ChangePlayersButton"
+        android:layout_marginTop="@dimen/MarginTop"
+        android:onClick="onClickStartNewGame"
+        android:background="@color/MainButtonColor"
+        android:padding="5dp"/>
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Remove users history"
+        android:id="@+id/RemoveHistoryButton"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/StartNewGameButton"
+        android:layout_marginTop="@dimen/MarginTop"
+        android:onClick="onClickRemoveHistory"
+        android:background="@color/MainButtonColor"
+        android:padding="5dp"/>
+
+</RelativeLayout>

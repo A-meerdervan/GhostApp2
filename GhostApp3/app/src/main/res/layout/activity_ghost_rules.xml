@@ -1,0 +1,35 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.alex.ghostapp3.GhostRulesActivity"
+    android:background="@color/MainBackgroundColor">
+
+    <include
+        android:id="@+id/AppBar"
+        layout="@layout/app_bar">
+    </include>
+
+    <TextView
+        android:layout_marginStart="@dimen/DpFromSide"
+        android:layout_marginEnd="@dimen/DpFromSide"
+        android:paddingTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Default"
+        android:id="@+id/TheRulesTV"
+        android:layout_below="@+id/AppBar"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_marginStart="@dimen/DpFromSide"
+        android:layout_marginEnd="@dimen/DpFromSide"
+        android:paddingTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/Default"
+        android:id="@+id/RulesTV"
+        android:layout_below="@+id/TheRulesTV"
+        android:layout_alignParentStart="true" />
+</RelativeLayout>

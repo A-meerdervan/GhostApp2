@@ -36,6 +36,14 @@
             android:name=".GhostGameActivity"
             android:label="@string/title_activity_ghost_game" >
         </activity>
+        <activity
+            android:name=".GhostSettingsActivity"
+            android:label="@string/title_activity_ghost_settings" >
+        </activity>
+        <activity
+            android:name=".GhostPauseActivity"
+            android:label="@string/title_activity_ghost_pause" >
+        </activity>
     </application>
 
 </manifest>

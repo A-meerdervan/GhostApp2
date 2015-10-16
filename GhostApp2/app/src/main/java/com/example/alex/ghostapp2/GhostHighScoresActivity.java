@@ -11,27 +11,23 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-
+import android.support.v7.widget.Toolbar;
 import java.util.ArrayList;
-import java.util.List;
 
 public class GhostHighScoresActivity extends AppCompatActivity {
 
-    private ArrayList<Player> PlayersArray = new ArrayList<Player>();
     private Players players;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ghost_high_scores);
-        //populateHighscoresList();
-        //PlayersArray.add(new Player("joop", 8));
-        // Get the players object to display
-        players = new Players(getApplicationContext());
-        populateListView();
+        toolbar = (Toolbar)findViewById(R.id.AppBar);
+        setSupportActionBar(toolbar);
         //Intent intent = this.getIntent();
         //if (intent.getSerializableExtra("players") != null){
         //    players = (Players)intent.getSerializableExtra("players");
@@ -41,29 +37,45 @@ public class GhostHighScoresActivity extends AppCompatActivity {
        // else{
         //    Log.d("xzzr", "Het players object werd niet succesvol gestuurd naar de highscores activity");
        // }
+        // Get the players object to display
+        players = new Players(getApplicationContext());
+        populateListView();
+        // Display all screen items in the current language
+        setViewsToLanguage();
+    }
+
+    private void setViewsToLanguage() {
         // Get the language
         SharedPreferences prefs = getSharedPreferences("SaveGame", Context.MODE_PRIVATE);
-        String Language = prefs.getString("Language", "Dutch");
+        String Language = prefs.getString("Language", "dutch");
         // Change the screen items:
+        TextView NameTV = (TextView) findViewById(R.id.TextViewName);
+        Button NewGame = (Button) findViewById(R.id.NewMatchButtonHighscores);
 
+        if (Language.equals("dutch")) {
+            NameTV.setText("Naam");
+            NewGame.setText("Niew spel");
+        } else {
+            NameTV.setText("Name");
+            NewGame.setText("New game");
+        }
     }
 
     private void populateListView() {
-        //players.addPlayer(players.CurrentPlayer1);
-        players.PlayersArray.add(players.CurrentPlayer1);
-        players.PlayersArray.add(players.CurrentPlayer2);
-        Log.d("xzzr", players.PlayersArray.get(0).Name);
-        //Log.d("xzzr", players.PlayersArray.get(1).Name);
+        // Sort the players on highscores
+        players.sortArrayOnHighScore();
         // Fill the listview list
         ArrayAdapter<Player> adapter = new MyListAdapter();
         ListView list = (ListView) findViewById(R.id.HighScoresList);
         list.setAdapter(adapter);
     }
 
+    // The game activity was not closed, so closing this activity brings the user back to the automaticaly reseted game.
     public void onClickNewMatch(View view){
         this.finish();
     }
 
+    // This custom adapter class is made to fill the listview with player information
     private class MyListAdapter extends ArrayAdapter<Player> {
         public MyListAdapter() {
             super(GhostHighScoresActivity.this, R.layout.listvieww, players.PlayersArray);
@@ -77,14 +89,14 @@ public class GhostHighScoresActivity extends AppCompatActivity {
                 itemView = getLayoutInflater().inflate(R.layout.listvieww, parent, false);
             }
 
-            // Find the car to work with.
+            // Find the player to work with
             Player CurrentPlayer = players.PlayersArray.get(position);
 
             // Fill the view
 
-            // Number:
+            // Rank:
             TextView Number = (TextView) itemView.findViewById(R.id.RankNumber);
-            Number.setText("" + position);
+            Number.setText("" + (position + 1));
 
             // Name:
             TextView Name = (TextView) itemView.findViewById(R.id.Name);
@@ -98,6 +110,17 @@ public class GhostHighScoresActivity extends AppCompatActivity {
         }
     }
 
+    // update the players object
+    @Override
+    protected void onStop() {
+        super.onStop();
+        players.writeDataToFile(getApplicationContext());
+        // TEST:
+        players.fillFromFile();
+        for (int i = 0; i < players.PlayersArray.size(); i++){
+            Log.d("xzzr", players.PlayersArray.get(i).Name);
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -113,11 +136,12 @@ public class GhostHighScoresActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.Settings) {
+            // go to the Settings page.
+            startActivity(new Intent(getApplicationContext(), GhostSettingsActivity.class));
+            // This activity is not closed, the user will return by pressing the back button from the rules activity
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

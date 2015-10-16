@@ -31,4 +31,26 @@ public class Player implements java.io.Serializable {
             Score = Score - 5;
         }
     }
+
+    // Override the equals and hashcode functions so the hashset functions know when a player object is already in the set or not.
+
+    @Override
+    public boolean equals(Object o) {
+        Player player = (Player)o;
+
+        if (player == null){
+            return false;
+        }
+        // if the object has the same name, they are equal because this game does not allow double names.
+        if (player.Name.equals(this.Name)){
+            return true;
+        }
+        return false;
+    }
+
+    // this function gives a unique number for each player
+    @Override
+    public int hashCode() {
+        return Name.hashCode();
+    }
 }

@@ -10,10 +10,12 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ShareActionProvider;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.support.v7.widget.Toolbar;
 
 import java.util.HashSet;
 import java.util.Iterator;
@@ -21,17 +23,21 @@ import java.util.Set;
 
 public class GhostGameActivity extends AppCompatActivity {
 
+
     private GameEngine gameEngine;
     private Lexicon lexicon;
     private Players players;
     private int CurrentPlayer = 1; // it is initialized to 1 because player1 always starts the game
     private String Language = "uninitialized";
     private boolean GameStillGoing = true;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ghost_game);
+        toolbar = (Toolbar)findViewById(R.id.AppBarGame);
+        setSupportActionBar(toolbar);
         // Get the language
         SharedPreferences prefs = getSharedPreferences("SaveGame", Context.MODE_PRIVATE);
         Language = prefs.getString("Language", "dutch");
@@ -57,12 +63,15 @@ public class GhostGameActivity extends AppCompatActivity {
             gameEngine.lexicon.CurrentFilteredSet = s;
             gameEngine.lexicon.LetterIndex = SaveGame.getInt("LetterIndex", 0);
             gameEngine.Prefix = SaveGame.getString("Prefix", "uninitialized");
+            gameEngine.FirstGuessNotMadeYet = prefs.getBoolean("FirstGuessWasNotMadeY", true);
             TextView tvEditFragment = (TextView)findViewById(R.id.WordFragmentEdit);
             tvEditFragment.setText(SaveGame.getString("EditFragment", "uninitialized"));
         }
         else{
             gameEngine = new GameEngine(lexicon, Language);
         }
+        // Display all screen items in the current language
+        setViewsToLanguage();
         // Display who is up
         TextView TVplayer = (TextView)findViewById(R.id.CurrentPlayer);
         if (CurrentPlayer == 1){
@@ -71,8 +80,27 @@ public class GhostGameActivity extends AppCompatActivity {
         else{
             TVplayer.setText(players.CurrentPlayer2.Name);
         }
-        // Change the screen items for the current language:
+    }
 
+    private void setViewsToLanguage() {
+        // Get the language
+        SharedPreferences prefs = getSharedPreferences("SaveGame", Context.MODE_PRIVATE);
+        String Language = prefs.getString("Language", "dutch");
+        // Change the screen items:
+        TextView WordFragment = (TextView) findViewById(R.id.WordFragment);
+        TextView PlayerTV = (TextView) findViewById(R.id.CurrentPlayer);
+        Button Submit = (Button) findViewById(R.id.SubmitButton);
+        Button Restart = (Button) findViewById(R.id.RestartButton);
+
+        if (Language.equals("dutch")) {
+            WordFragment.setText("Woordfragment");
+            Submit.setText("Voer in");
+            Restart.setText("Reset spel");
+        } else {
+            WordFragment.setText("Word fragment");
+            Submit.setText("Submit");
+            Restart.setText("Restart");
+        }
     }
 
     public void OnClickSubmitGuess(View view){
@@ -88,7 +116,7 @@ public class GhostGameActivity extends AppCompatActivity {
             // In this case the input is 3 characters
             else{
                 // if the input are unused characters, give a toast
-                if(PrefixNotAllLetters()){
+                if(PrefixNotAllLetters(Guess)){
                     Toast.makeText(getApplicationContext(), "Please only use letters and the apostrof sign", Toast.LENGTH_LONG).show();
                 }
                 // The input is legit so process it
@@ -108,7 +136,7 @@ public class GhostGameActivity extends AppCompatActivity {
             // In this case the input is size 1
             else{
                 // if the input is an unused character, give a toast
-                if (guessIsNotAletter()){
+                if (guessIsNotAletter(Guess)){
                     Toast.makeText(getApplicationContext(), "Only use letters or the apostrof sign", Toast.LENGTH_LONG).show();
                 }
                 // In this case the input is legit
@@ -151,35 +179,44 @@ public class GhostGameActivity extends AppCompatActivity {
         }
     }
 
-    public boolean guessIsNotAletter(){
-        // verzin iets
-        return false;
+    public boolean guessIsNotAletter(String Guess){
+        boolean GuessIsNotALetter = false;
+        String Alfabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'";
+        if (!(Alfabet.contains(Guess))){
+            GuessIsNotALetter = true;
+        }
+        return GuessIsNotALetter;
     }
 
-    public boolean PrefixNotAllLetters(){
+    public boolean PrefixNotAllLetters(String Guess){
+        boolean GuessIsNotValid = false;
+        String Alfabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'";
+        for (int i = 0; i < Guess.length(); i++) {
+            if (!(Alfabet.contains(String.valueOf(Guess.charAt(i))))) {
+                GuessIsNotValid = true;
+            }
+        }
         // denk later na over deze implementatie
-        return false;
+        return GuessIsNotValid;
     }
 
     private void userLost(){
         // The game is not still going
         GameStillGoing = false;
 
-        // Go to the winner page, and send why he won and the players object
+        // Go to the winner page, and send why the player won and the players object(for use in the higscores activity)
         Intent intent = new Intent(getApplicationContext(),WinnerScreenActivity.class);
         String Winner;
         String ReasonForWinning;
         if (CurrentPlayer == 1){
             Winner = players.CurrentPlayer2.Name;
             ReasonForWinning = gameEngine.ReasonForWinning;
-            players.CurrentPlayer2.increaseScore();
-            players.CurrentPlayer1.decreaseScore();
+            players.player2Won();
         }
         else{
-            Winner = players.CurrentPlayer2.Name;
+            Winner = players.CurrentPlayer1.Name;
             ReasonForWinning = gameEngine.ReasonForWinning;
-            players.CurrentPlayer1.increaseScore();
-            players.CurrentPlayer2.decreaseScore();
+            players.player1Won();
         }
 
         // fill intent and go to the highscores activity
@@ -189,6 +226,7 @@ public class GhostGameActivity extends AppCompatActivity {
         Log.d("xzzr", "Score" + players.CurrentPlayer2.Score + " " + players.CurrentPlayer1.Score);
         //intent.putExtra("players", players);
         startActivity(intent);
+        // The onClickRestartGame function needs a view so a bogus tekstview is created
         TextView onzin = (TextView)findViewById(R.id.Score);
         onClickRestartGame(onzin);
         // This activity is not closed, so it is easy to return.
@@ -223,7 +261,10 @@ public class GhostGameActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.PauzeAction) {
+            // go to the Pauze page.
+            startActivity(new Intent(getApplicationContext(), GhostPauseActivity.class));
+            // This activity is not closed, the user will return by pressing the back button from the rules activity
             return true;
         }
 
@@ -233,14 +274,14 @@ public class GhostGameActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        // get shared prefs
+        // If the game is on going, save the state to a shared preferences file
         SharedPreferences prefs = this.getSharedPreferences("SaveGame",this.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         if (GameStillGoing){
             // Write to prefs
-            Log.d("xzzr", "Komt in if Gamestillgoing dus ja de game was still going (dit is in on stop)");
             editor.putBoolean("GameStillGoing",GameStillGoing);
             editor.putInt("CurrentPlayer", CurrentPlayer);
+            editor.putBoolean("FirstGuessWasNotMadeY",gameEngine.FirstGuessNotMadeYet);
             Set<String> CurrentFilteredSet = new HashSet<String>();
             // Get the CurrentFilteredSet and write it to prefs.
             Iterator IteratorOnSet = gameEngine.lexicon.CurrentFilteredSet.iterator();
@@ -258,7 +299,5 @@ public class GhostGameActivity extends AppCompatActivity {
             editor.putBoolean("GameStillGoing", GameStillGoing);
         }
         editor.commit();
-
-        players.writeDataToFile(getApplicationContext());
     }
 }

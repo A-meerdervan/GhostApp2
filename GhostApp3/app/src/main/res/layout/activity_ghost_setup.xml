@@ -1,0 +1,89 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.alex.ghostapp3.GhostSetupActivity"
+    android:background="@color/MainBackgroundColor">
+
+    <include
+        android:id="@+id/AppBar"
+        layout="@layout/app_bar">
+    </include>
+
+    <TextView
+        android:layout_below="@+id/AppBar"
+        android:layout_marginLeft="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:text="Player 1"
+        android:id="@+id/textView4"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="25dp"
+        android:textColor="@color/Black" />
+
+    <TextView
+        android:layout_marginLeft="25dp"
+        android:textColor="@color/Black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Enter your username"
+        android:id="@+id/ChangeNameTV"
+        android:layout_below="@+id/textView4"
+        android:layout_alignParentStart="true" />
+
+    <AutoCompleteTextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_marginLeft="25dp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/EditPlayer1"
+        android:layout_below="@+id/ChangeNameTV"
+        android:layout_alignParentStart="true"  />
+
+    <TextView
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textColor="@color/Black"
+        android:text="Player 2"
+        android:id="@+id/textView7"
+        android:layout_below="@+id/EditPlayer1"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_marginLeft="25dp"
+        android:textColor="@color/Black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Enter your username"
+        android:id="@+id/ChangeNameTV2"
+        android:layout_below="@+id/textView7"
+        android:layout_alignParentStart="true" />
+
+    <AutoCompleteTextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_marginLeft="25dp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/EditPlayer2"
+        android:layout_below="@+id/ChangeNameTV2"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="25dp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Continue"
+        android:id="@+id/ContinueButton2"
+        android:layout_below="@+id/EditPlayer2"
+        android:layout_alignParentStart="true"
+        android:background="@color/MainButtonColor"
+        android:padding="5dp"
+        android:onClick="onClickContinue"/>
+
+</RelativeLayout>

@@ -1,19 +1,32 @@
 package com.example.alex.ghostapp2;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.support.v7.widget.Toolbar;
+
+
 
 public class GhostRulesActivity extends AppCompatActivity {
+
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ghost_rules);
+        toolbar = (Toolbar)findViewById(R.id.AppBar);
+        setSupportActionBar(toolbar);
+        // Display all screen items in the current language
+        setViewsToLanguage();
+    }
+
+    private void setViewsToLanguage() {
         // Get the language
         SharedPreferences prefs = getSharedPreferences("SaveGame", Context.MODE_PRIVATE);
         String Language = prefs.getString("Language", "dutch");
@@ -21,12 +34,10 @@ public class GhostRulesActivity extends AppCompatActivity {
         TextView tvTheRules = (TextView)findViewById(R.id.TheRulesTV);
         TextView tvRules = (TextView)findViewById(R.id.RulesTV);
         if (Language.equals("dutch")){
-            // Set the views in dutch
             tvTheRules.setText(this.getString(R.string.TheRulesDutch));
             tvRules.setText(this.getString(R.string.RulesDutch));
         }
         else{
-            // Set the views in English
             tvTheRules.setText(this.getString(R.string.TheRulesEnglish));
             tvRules.setText(this.getString(R.string.RulesEnglish));
         }
@@ -46,11 +57,12 @@ public class GhostRulesActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.Settings) {
+            // go to the Settings page.
+            startActivity(new Intent(getApplicationContext(), GhostSettingsActivity.class));
+            // This activity is not closed, the user will return by pressing the back button from the rules activity
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }
