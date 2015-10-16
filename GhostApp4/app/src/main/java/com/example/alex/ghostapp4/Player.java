@@ -1,7 +1,9 @@
 package com.example.alex.ghostapp4;
 
 /**
- * Created by Alex on 7-10-2015.
+ * Created by Alex van der Meer
+ * Student number: 10400958
+ * on 12-10-2015.
  *
  * This class holds the information on a player, and it has an ID for use in the Database
  * where these objects are stored

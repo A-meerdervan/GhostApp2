@@ -10,7 +10,9 @@ import java.util.HashSet;
 import java.util.Iterator;
 
 /**
- * Created by Alex on 5-10-2015.
+ * Created by Alex van der Meer
+ * Student number: 10400958
+ * on 12-10-2015.
  *
  * This class holds functions to read in a dictionary from a file, it is placed in a Hashset
  * The two filter functions could be made shorter by using the .startswith function of the string class

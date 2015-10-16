@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Alex on 7-10-2015.F
+ * Created by Alex van der Meer
+ * Student number: 10400958
+ * on 12-10-2015.
  *
  * This class is used to keep the user history
  * it has a method to fill itself from the database

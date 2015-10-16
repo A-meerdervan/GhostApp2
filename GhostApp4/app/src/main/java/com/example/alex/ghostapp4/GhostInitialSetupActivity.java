@@ -17,7 +17,9 @@ import android.widget.Toast;
 import android.support.v7.widget.Toolbar;
 
 /**
- * Created by Alex on 12-10-2015.
+ * Created by Alex van der Meer
+ * Student number: 10400958
+ * on 12-10-2015.
  *
  * This class is the first screen the user sees, here it is possible to set the language
  * and view the rules, if the user is already familiar with the app, continue can be directly

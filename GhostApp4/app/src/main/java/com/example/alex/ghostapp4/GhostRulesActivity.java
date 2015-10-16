@@ -11,7 +11,9 @@ import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
 
 /**
- * Created by Alex on 12-10-2015.
+ * Created by Alex van der Meer
+ * Student number: 10400958
+ * on 12-10-2015.
  *
  * This Acivity simply shows the GameRules
  */

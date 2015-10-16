@@ -12,7 +12,9 @@ import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
 
 /**
- * Created by Alex on 5-10-2015.
+ * Created by Alex van der Meer
+ * Student number: 10400958
+ * on 12-10-2015.
  *
  * This Acitvity only displays the Winner and the reason for winning, wich are send
  * by the game activity with the intent

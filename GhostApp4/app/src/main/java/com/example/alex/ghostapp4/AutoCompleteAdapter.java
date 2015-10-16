@@ -12,7 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Alex on 12-10-2015.
+ * Created by Alex van der Meer
+ * Student number: 10400958
+ * on 12-10-2015.
  *
  * This Class handles the autocompletion, when a player chooses a name.
  * It gives a clickable list of previously used playernames

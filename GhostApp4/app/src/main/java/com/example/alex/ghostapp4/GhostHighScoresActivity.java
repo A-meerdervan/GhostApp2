@@ -18,7 +18,9 @@ import android.support.v7.widget.Toolbar;
 import java.util.List;
 
 /**
- * Created by Alex on 12-10-2015.
+ * Created by Alex van der Meer
+ * Student number: 10400958
+ * on 12-10-2015.
  *
  * This Activity displays the highscores, from highest score to lowest
  * it does this using a custom listview, the small custom listview class is embedded in this

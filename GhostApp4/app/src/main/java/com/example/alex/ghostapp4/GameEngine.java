@@ -1,7 +1,9 @@
 package com.example.alex.ghostapp4;
 
 /**
- * Created by Alex on 5-10-2015.
+ * Created by Alex van der Meer
+ * Student number: 10400958
+ * on 12-10-2015.
  *
  * This class is responsible for applying the game's rules
  * The most important function receives the user's guess and returns wheter the game ended

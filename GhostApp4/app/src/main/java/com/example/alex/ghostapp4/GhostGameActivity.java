@@ -20,7 +20,9 @@ import java.util.Iterator;
 import java.util.Set;
 
 /**
- * Created by Alex on 12-10-2015.
+ * Created by Alex van der Meer
+ * Student number: 10400958
+ * on 12-10-2015.
  *
  * The activity switches from players 1 to player 2, when a player inputs a move in the game
  * The user input is checked for incorrect type's of characters and amount of them.

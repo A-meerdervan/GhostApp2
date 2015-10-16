@@ -14,9 +14,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
-
 /**
- * Created by Alex on 12-10-2015.
+ * Created by Alex van der Meer
+ * Student number: 10400958
+ * on 12-10-2015.
  *
  * This Activity is used only to set the player names that will play the next game
  * it holds a function to already fill in the previous names, so the user only has
